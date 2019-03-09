@@ -3,13 +3,13 @@
 **Gela Mais** é uma solução para desenvolver uma forma eficiente de se controlar produtos que estão armazenados na geladeira.
 
 
-### Dependencies
+### Dependêncies
 
 - Nodejs:
     - Express
     - npm
 
-### Installing
+### Instalando
 
 Para rodar o servidor precisamos entrar na pasta que contém o arquivo `package.json`. 
 1. Instalando as dependências do NodeJS:
@@ -18,7 +18,7 @@ Para rodar o servidor precisamos entrar na pasta que contém o arquivo `package.
 $ npm install
 ```
 
-2. Run the Server:
+2. Rodando o Servidor:
 
 ```shell
 $ npm start
@@ -26,7 +26,7 @@ $ npm start
 
 #### API
 
-- Login `url.com/register/`
+- Registro `url.com/register/`
 
 
 **Envio:**
