@@ -11,7 +11,6 @@
 
 ### Installing
 
-The server is written in Django and is  placed on `server/` folder. Follow this steps to setup the server:
 Para rodar o servidor precisamos entrar na pasta que contém o arquivo `package.json`. 
 1. Instalando as dependências do NodeJS:
 
