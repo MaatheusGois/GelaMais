@@ -18,7 +18,7 @@ const options = {
 
 
 //Em Produção
-mongoose.connect('mongodb://admin:admin123@ds011715.mlab.com:11715/mogicidade', options)
+mongoose.connect('mongodb://admin:admin123@ds331135.mlab.com:31135/todoacademy', options)
 
 
 const db = mongoose.connection
