@@ -10,7 +10,7 @@
 ```
 { 
     'nome' : <nome>,
-    'email' : <emauk>,
+    'email' : <email>,
     'email' : <senha>,
 }
 ```
