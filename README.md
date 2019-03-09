@@ -5,7 +5,7 @@
 
 ### Dependêncies
 
-- Nodejs:
+- NodeJS:
     - Express
     - npm
 
