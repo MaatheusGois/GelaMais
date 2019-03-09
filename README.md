@@ -11,7 +11,7 @@
 { 
     'nome' : <nome>,
     'email' : <email>,
-    'email' : <senha>,
+    'email' : <senha>
 }
 ```
 
