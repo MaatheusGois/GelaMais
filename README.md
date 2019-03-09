@@ -35,7 +35,7 @@ $ npm start
 { 
     'nome' : <nome>,
     'email' : <email>,
-    'email' : <senha>
+    'senha' : <senha>
 }
 ```
 
