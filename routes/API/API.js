@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose')
 const User = mongoose.model('User')
-const Ocorrencia = mongoose.model('Ocorrencia')
+const Food = mongoose.model('Food')
+// const Aluno = mongoose.model('Aluno')
 
 
 /* GET home page. */
@@ -13,24 +14,21 @@ router.get('/', function (req, res, next) {
 router.post('/register', async function (req, res, next) {
     try {
         let novoUsuario = new User(req.body)
-        novoUsuario.senha = novoUsuario.hashPassword(novoUsuario.senha)
         await novoUsuario.save()
-        res.json({ resposta: true })
+        res.json(true)
     } catch (err) {
         console.log('Error: ', err)
-        res.json({ resposta: false })
+        res.json(false)
     }
 });
 
-router.post('/login', async function (req, res, next) {
-    let email = req.body.email
-    let senha = req.body.senha
+router.get('/login/:tia', async function (req, res, next) {
+    let tia = req.params.tia
+    // let senha = req.body.senha
 
     try {
-        let user = await User.findOne({
-            email: email
-        }).exec()
-        if (user && user.checkPassword(senha)) {
+        let user = await User.findOne({ tia }).exec()
+        if (user) {
             res.json(user)
         } else {
             res.json(false)
@@ -40,32 +38,92 @@ router.post('/login', async function (req, res, next) {
     }
 });
 
-router.post('/ocorrencia', async (req, res, next) => {
+router.put('/sheriff/:tia', async (req, res, next) => {
     try {
         console.log("here")
-        let novaOcorrencia = new Ocorrencia(req.body)
+        let tia = req.params.tia
 
-        await novaOcorrencia.save()
-        res.json({ resposta: 'Gravado com Sucesso!' })
+        if (tia) {
+            let oldSheriff = await User.findOne({ sheriff: true }).exec()
+            oldSheriff.sheriff = false
+            let sheriff = await User.findOne({ tia }).exec()
+            sheriff.sheriff = true
+            await oldSheriff.save()
+            await sheriff.save()
+            res.json(true)
+        }
+        else {
+            res.json(false)
+        }
 
     } catch (err) {
         console.log('Error: ', err)
-        res.json({ resposta: false })
+        res.json(false)
 
     }
 })
 
-router.get('/ocorrencias', async (req, res, next) => {
+router.get('/sheriff', async (req, res, next) => {
     try {
-        let ocorrencias = await Ocorrencia.find({})
-        res.json(ocorrencias)
+        let sheriff = await User.findOne({ sheriff: true }).exec()
+        res.json(sheriff)
 
     } catch (err) {
         console.log('Error: ', err)
-        res.json({ resposta: false })
+        res.json(false)
 
     }
 })
+
+
+router.get('/food', async (req, res, next) => {
+    try {
+        let food = await Food.find()
+        res.json(food)
+
+    } catch (err) {
+        console.log('Error: ', err)
+        res.json(false)
+    }
+})
+
+
+router.post('/food', async (req, res, next) => {
+    try {
+
+        let user = await User.findOne({ tia: req.body.tia }).exec()
+
+        let body = {
+            name: req.body.name,
+            owner: user._id
+        }
+
+        let newFood = new Food(body)
+
+        await newFood.save()
+
+        res.json(true)
+
+    } catch (err) {
+        console.log('Error: ', err)
+        res.json(false)
+    }
+})
+
+
+router.delete('/food/:id', async (req, res, next) => {
+    try {
+        let idFood = req.params.id
+        await Food.findByIdAndRemove(idFood)
+
+        res.json(true)
+
+    } catch (err) {
+        console.log('Error: ', err)
+        res.json(false)
+    }
+})
+
 
 module.exports = router;
 
