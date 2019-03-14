@@ -22,8 +22,8 @@ router.post('/register', async function (req, res, next) {
     }
 });
 
-router.get('/login/:tia', async function (req, res, next) {
-    let tia = req.params.tia
+router.post('/login', async function (req, res, next) {
+    let tia = req.body.tia
     // let senha = req.body.senha
 
     try {
