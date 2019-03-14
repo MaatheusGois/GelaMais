@@ -111,9 +111,9 @@ router.post('/food', async (req, res, next) => {
 })
 
 
-router.delete('/food/:id', async (req, res, next) => {
+router.delete('/food', async (req, res, next) => {
     try {
-        let idFood = req.params.id
+        let idFood = req.body._id
         await Food.findByIdAndRemove(idFood)
 
         res.json(true)
