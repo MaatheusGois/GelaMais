@@ -26,126 +26,66 @@ $ npm start
 
 #### API
 
-
-##### Obter Grupos
-
-Method: `GET`
-
-Url: `url.com/api/grupo`
+- Registro `suaUrl.com/api/`
 
 
-**Resposta:**
+**Envio:**
 
 ```
-{
-    //Informaçoes básicas
-    nome: String,
-    sigla: String,
-    breveDescricao: String,
-    sobre: String,
-    imagem: Buffer,
-    ativado: Boolean,
-    
-    //Contato
-    organizador1: String,
-    contatoOrganizador1: String,
-    organizador2: String,
-    contatoOrganizador2: String,
-    organizador3: String,
-    contatoOrganizador3: String,
-
-    //Rede sociais
-    facebook: String,
-    whatsapp: String,
-    instagram: String,
-    
-    //Usuário vinculado
-    usuario: 'User',
- 
-    //Data de criação e alteração 
-    timestamps: Date
+{ 
+    'nome' : <nome>,
+    'email' : <email>,
+    'senha' : <senha>
 }
 ```
 
+**Recebe:**
 
-##### Obter Eventos
-
-Method: `GET`
-
-Url: `url.com/api/evento`
-
-
-**Resposta:**
+Se sucesso:
 
 ```
 {
-    //Informaçoes básicas
-    nome: String,
-    local: String,
-    ativado: Boolean,
-    sobre: String,
-    imagem: String,
-    
-    //Data
-    dataInicio: String,
-    dataFim: String,
-    horarioInicio: String,
-    horarioFim: String,
-    
-    //Grupo vinculado
-    autor: 'Grupo'
-    
-    //Data de criação e alteração 
-    timestamps: Date
+     'resposta': true
 }
 ```
 
-
-##### Obter Reuniões
-
-Method: `GET`
-
-Url: `url.com/api/reuniao`
-
-
-**Resposta:**
+Se não:
 
 ```
 {
-    //Informaçoes básicas
-    dia: String,
-    horario: String,
-    local: String,
-    ativado: Boolean
-    
-    //Grupo vinculado
-    autor: 'Grupo'
-    
-    //Data de criação e alteração 
-    timestamps: Date
+    'resposta': false
+⁾)
+```
+
+
+- Login `url.com/login/`
+
+**Envio:**
+
+```
+{ 
+    'email' : <email>,
+    'senha' : <senha>
 }
 ```
 
-##### Obter Tudo
+**Recebe:**
 
-Method: `GET`
-
-Url: `url.com/api/all`
-
-
-**Resposta:**
+Se sucesso:
 
 ```
 {
-    grupos: {
-        //Recebe todas as informações descritas acima de grupos
-    },
-    reunioes: {
-        //Recebe todas as informações descritas acima de reuniões 
-    },
-    eventos: {
-        //Recebe todas as informações descritas acima de evento
-    }
+    'nome': <user_name>,
+    'email' : <user_email>,
+    'senha' : <user_senha>
+}
+```
+
+Se não:
+
+```
+{
+    'login' : 'false'
 }
 ```
 
