@@ -1,6 +1,6 @@
-# GelaMais
+# Sai-Food
 
-**Gela Mais** é uma solução para desenvolver uma forma eficiente de se controlar produtos que estão armazenados na geladeira.
+**Sai Food** é uma solução para desenvolver uma forma eficiente de se controlar produtos que estão armazenados na geladeira.
 
 
 ### Dependêncies
